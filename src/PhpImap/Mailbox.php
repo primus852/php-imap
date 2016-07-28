@@ -131,7 +131,14 @@ class Mailbox {
 	public function statusMailbox() {
 		return imap_status($this->getImapStream(), $this->imapPath, SA_ALL);
 	}
-
+	
+	/**
+        * Reopen IMAP stream to new mailbox
+        * @return bool
+        */
+        public function reopenMailbox($folder) {
+               return imap_reopen($this->getImapStream(), $folder);
+        }
 
 	/**
 	 * Gets listing the folders
